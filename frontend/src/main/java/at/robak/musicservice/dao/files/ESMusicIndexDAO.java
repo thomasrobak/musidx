@@ -49,11 +49,11 @@ public class ESMusicIndexDAO implements MusicIndexDAO{
         term = term.replaceAll(" ", "*");
         log.info(String.format("Searching for %s", term));
         return QueryBuilders.boolQuery()
-                .should(QueryBuilders.termQuery("Title", term))
-                .should(QueryBuilders.termQuery("Artist", term))
-                .should(QueryBuilders.termQuery("SourceFile", term))
-                .should(QueryBuilders.termQuery("FileName", term))
-                .should(QueryBuilders.termQuery("Genre", term));
+                .should(QueryBuilders.wildcardQuery("Title", term))
+                .should(QueryBuilders.wildcardQuery("Artist", term))
+                .should(QueryBuilders.wildcardQuery("SourceFile", term))
+                .should(QueryBuilders.wildcardQuery("FileName", term))
+                .should(QueryBuilders.wildcardQuery("Genre", term));
         
     }
     
