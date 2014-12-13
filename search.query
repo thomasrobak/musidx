@@ -1,0 +1,14 @@
+{
+	"full": {
+		"query": {
+			"bool": {
+				"should": [
+					{"match": {"Artist": "{{query_string}}"}},
+					{"match": {"Title": "{{query_string}}"}},
+					{"match": {"SourceFile": "{{query_string}}"}},
+					{"match": {"Genre": "{{query_string}}"}},
+				]
+			}
+		}
+	}
+}
