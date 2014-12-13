@@ -33,8 +33,7 @@ public class ESMusicIndexDAO implements MusicIndexDAO{
     
     @Override
     public SearchResult search(String term, Integer offset, Integer count) {
-        log.info(String.format("Searching for %s", term));
-        
+       
         SearchRequestBuilder req = esClient.get().prepareSearch("media");
         req.setSearchType(SearchType.QUERY_AND_FETCH)
            .setQuery(buildQuery(term));
@@ -48,6 +47,7 @@ public class ESMusicIndexDAO implements MusicIndexDAO{
 
     private QueryBuilder buildQuery(String term) {
         term = term.replaceAll(" ", "*");
+        log.info(String.format("Searching for %s", term));
         return QueryBuilders.boolQuery()
                 .should(QueryBuilders.termQuery("Title", term))
                 .should(QueryBuilders.termQuery("Artist", term))
