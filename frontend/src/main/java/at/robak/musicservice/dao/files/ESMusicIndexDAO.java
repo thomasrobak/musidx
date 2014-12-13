@@ -10,16 +10,13 @@ import at.robak.musicservice.dao.clients.ESClient;
 import at.robak.musicservice.data.SearchResult;
 import at.robak.musicservice.data.Song;
 import at.robak.musicservice.parser.SearchResponseParser;
+import java.util.logging.Logger;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.search.SearchType;
-import org.elasticsearch.client.Client;
-import org.elasticsearch.client.transport.TransportClient;
-import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.node.NodeBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -28,12 +25,16 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class ESMusicIndexDAO implements MusicIndexDAO{
 
+    Logger log = Logger.getLogger(getClass().getName());
+    
     @Autowired
     private ESClient esClient;
     
     
     @Override
     public SearchResult search(String term, Integer offset, Integer count) {
+        log.info(String.format("Searching for %s", term));
+        
         SearchRequestBuilder req = esClient.get().prepareSearch("media");
         req.setSearchType(SearchType.QUERY_AND_FETCH)
            .setQuery(buildQuery(term));
