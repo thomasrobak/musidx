@@ -47,12 +47,14 @@ public class ESMusicIndexDAO implements MusicIndexDAO{
     }
 
     private QueryBuilder buildQuery(String term) {
+        term = term.replaceAll(" ", "*");
         return QueryBuilders.boolQuery()
                 .should(QueryBuilders.termQuery("Title", term))
                 .should(QueryBuilders.termQuery("Artist", term))
                 .should(QueryBuilders.termQuery("SourceFile", term))
                 .should(QueryBuilders.termQuery("FileName", term))
                 .should(QueryBuilders.termQuery("Genre", term));
+        
     }
     
     public Song get(String id) {
