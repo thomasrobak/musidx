@@ -1,0 +1,21 @@
+<html>
+<head>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/elasticsearch.min.js"></script>
+    <script src="js/miEs.js"></script>
+</head>
+<body>
+<div id="status">test1</div>
+<div class="searchform">
+    <input type="text" id="searchterm"/>
+    <input type="button" value="Search" id="btn_search"/>
+</div>
+<div id="result"></div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        miEs.init();
+    });
+</script>
+</body>
+</html>
+

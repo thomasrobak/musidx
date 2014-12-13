@@ -1,0 +1,37 @@
+.form-column-left {
+    float: left;
+    width: 90%;
+}
+
+.form-column-right {
+    float: right;
+    width: 10%;
+    text-align: center;
+}
+
+.form-search {
+    padding-top: 3px;
+    height: 40px;
+}
+
+.panel-heading > label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.panel-heading > .artist {
+
+}
+
+.panel-heading > .song {
+    font-weight: 500;
+}
+
+.info_block {
+    float: left;
+    margin-right: 25px;
+}
+
+.song_container button {
+    float: right;
+}
