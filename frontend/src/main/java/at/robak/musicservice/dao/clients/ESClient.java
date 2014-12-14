@@ -22,7 +22,8 @@ public class ESClient {
     @PostConstruct
     public void afterPropertiesSet() throws Exception {
         client = new TransportClient()
-                    .addTransportAddress(new InetSocketTransportAddress(settings.getHost(), settings.getPort()));
+                    .addTransportAddress(new InetSocketTransportAddress("master1.clupi", settings.getPort()));
+//        .addTransportAddress(new InetSocketTransportAddress(settings.getHost(), settings.getPort()));
     }
 
     @PreDestroy
