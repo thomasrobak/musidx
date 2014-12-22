@@ -18,7 +18,7 @@ sub cleanPath {
 
 my $e = Search::Elasticsearch->new(
 	nodes => [
-		"master1.clupi:9200"
+		"endor.sensei.ath.cx/search" 
 	]
 );
 
