@@ -1,5 +1,7 @@
 var mi = {};
 
+mi.searchstart = 0;
+
 mi.songs = [];
 
 mi.base = "/musidx/rest/files/";
@@ -36,8 +38,9 @@ mi.parseSong = function(id,song) {
 }
 
 mi.parseData = function(data) {
+    var end = new Date().getTime() - mi.searchstart;
     $('#rawdata').html(JSON.stringify(data));
-    mi.log("Hits: " + data.hits);
+    mi.log("Hits: " + data.hits + " Search took " + end + "ms");
     var result = "";
     var id = 0;
 
@@ -49,6 +52,7 @@ mi.parseData = function(data) {
 }
 
 mi.search = function() {
+    mi.searchstart = new Date().getTime();
     mi.log('searching...');
     $('.result').html('<div class="progress"><div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="20" style="width: 100%"/></div>');
     
