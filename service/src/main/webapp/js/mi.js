@@ -65,7 +65,7 @@ mi.init = function() {
     $('#formsearch').submit(mi.search);
     $('#btn_search').click(mi.search);
     $('#txt_term').select();
-    mi.log('mi loaded');
+    mi.log('Happy Searching!');
 }
 
 $(document).ready(mi.init);
