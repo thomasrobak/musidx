@@ -7,20 +7,30 @@ package at.robak.musicservice.config;
 
 import java.util.Properties;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.*;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  *
  * @author sensei
  */
+@Configuration
+@PropertySource("file:///etc/musidx/musidx.properties")
 public class Settings {
 
-    @Autowired Properties config;
+    @Value("${host:localhost}") String host;
+    @Value("${port:9300}")	String port;
+    @Value("$(searchfields:Artist,Title") String fields;
     
     public String getHost() {
-        return config.getProperty("host", "localhost");
+        return host;
     }
     
     public Integer getPort() {
-        return new Integer(config.getProperty("port", "9300"));
+        return new Integer(port);
+    }
+
+    public String[] getSearchFields() {
+	return fields.split(",");
     }
 }

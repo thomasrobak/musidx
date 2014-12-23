@@ -6,6 +6,7 @@
 
 package at.robak.musicservice.dao.files;
 
+import at.robak.musicservice.config.Settings;
 import at.robak.musicservice.dao.clients.ESClient;
 import at.robak.musicservice.data.SearchResult;
 import at.robak.musicservice.data.Song;
@@ -29,6 +30,9 @@ public class ESMusicIndexDAO implements MusicIndexDAO{
     
     @Autowired
     private ESClient esClient;
+
+    @Autowired
+    private Settings settings;
     
     
     @Override
@@ -48,7 +52,7 @@ public class ESMusicIndexDAO implements MusicIndexDAO{
     private QueryBuilder buildQuery(String term) {
         term = term.replaceAll(" ", "*");
         log.info(String.format("Searching for %s", term));
-        return QueryBuilders.multiMatchQuery(term, "Title^4","Artist^3","SourceFile","FileName","Genre");
+        return QueryBuilders.multiMatchQuery(term, settings.getSearchFields());
 //        return QueryBuilders.boolQuery()
 //                .should(QueryBuilders.wildcardQuery("Title", term))
 //                .should(QueryBuilders.wildcardQuery("Artist", term))

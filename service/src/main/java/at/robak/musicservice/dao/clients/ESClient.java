@@ -15,15 +15,16 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class ESClient {
 
-//    @Autowired Settings settings;
+    @Autowired Settings settings;
     
     private Client client;
+
     
     @PostConstruct
     public void afterPropertiesSet() throws Exception {
         client = new TransportClient()
-                    .addTransportAddress(new InetSocketTransportAddress("master1.clupi", 9300));
-//        .addTransportAddress(new InetSocketTransportAddress(settings.getHost(), settings.getPort()));
+//                    .addTransportAddress(new InetSocketTransportAddress("master1.clupi", 9300));
+ 		       .addTransportAddress(new InetSocketTransportAddress(settings.getHost(), settings.getPort()));
     }
 
     @PreDestroy
