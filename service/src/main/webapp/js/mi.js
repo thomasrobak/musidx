@@ -38,9 +38,8 @@ mi.parseSong = function(id,song) {
 }
 
 mi.parseData = function(data) {
-    var end = new Date().getTime() - mi.searchstart;
+    var searchend = new Date().getTime() - mi.searchstart;
     $('#rawdata').html(JSON.stringify(data));
-    mi.log("Found " + data.hits + " hits,  search took " + end + "ms");
     var result = "";
     var id = 0;
 
@@ -49,6 +48,9 @@ mi.parseData = function(data) {
     });
     
     $('.result').html(result);
+    var renderend = new Date().getTime() - searchend;
+    mi.log("Found " + data.hits + " hits,  search took " + searchend + "ms, rendering took " + renderend + "ms");
+    
 }
 
 mi.search = function() {
