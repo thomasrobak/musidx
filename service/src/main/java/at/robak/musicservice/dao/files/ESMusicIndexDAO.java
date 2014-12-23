@@ -48,7 +48,7 @@ public class ESMusicIndexDAO implements MusicIndexDAO{
     private QueryBuilder buildQuery(String term) {
         term = term.replaceAll(" ", "*");
         log.info(String.format("Searching for %s", term));
-        return QueryBuilders.multiMatchQuery(term, "Title","Artist","SourceFile","FileName","Genre");
+        return QueryBuilders.multiMatchQuery(term, "Title^4","Artist^3","SourceFile","FileName","Genre");
 //        return QueryBuilders.boolQuery()
 //                .should(QueryBuilders.wildcardQuery("Title", term))
 //                .should(QueryBuilders.wildcardQuery("Artist", term))

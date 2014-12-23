@@ -32,6 +32,11 @@
     margin-right: 25px;
 }
 
+.info_block_r {
+    float: right;
+    margin-right: 25px;
+}
+
 .song_container button {
     float: right;
 }

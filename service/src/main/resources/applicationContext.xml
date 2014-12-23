@@ -6,6 +6,8 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-3.0.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<context:component-scan base-package="at.robak.musicservice" />
  
         <bean id="config" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
             <property name="location" value="file:///etc/musidx/musidx.properties" />

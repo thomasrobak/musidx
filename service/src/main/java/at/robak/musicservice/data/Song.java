@@ -21,6 +21,7 @@ public class Song {
     private String  genre;
     private String  year;
     private String  file;
+    private float   score;
 
     public String getId() {
         return id;
@@ -106,6 +107,11 @@ public class Song {
         this.file = file;
     }
 
-
+    public float getScore() {
+	return score;
+    }
     
+    public void setScore(float score) {
+	this.score = score;
+    }
 }

@@ -70,6 +70,7 @@ public class SearchResponseParser {
         for(SearchHit hit : resp.getHits().getHits()) {
             Song s = parseSource(hit.getSource());
             s.setId(hit.getId());
+	    s.setScore(hit.getScore());
             if(s != null) {
                 result.getSongs().add(s);
             }

@@ -2,7 +2,7 @@ var mi = {};
 
 mi.songs = [];
 
-mi.base = "/frontend/rest/files/";
+mi.base = "/musidx/rest/files/";
 
 mi.log = function(msg) {
     $('#info').html(msg);
@@ -26,11 +26,11 @@ mi.parseSong = function(id,song) {
                     + song.bitrate
                     + '</p><p class="info">'
                     + song.album
-                    + '</p></div><button class="btn btn-primary" type="button" id="btn_play'
-                    + id
-                    + '" onclick=mi.play("'
-                    + song.id
-                    + '")>Play</button></div></div>';
+                    + '</p></div><div class="info_block_r"><p class="info">'
+                    + song.file
+                    + '</p><p class="info">'
+		    + song.score	
+                    + '</p></div></div></div>';
             
     return result;
 }
@@ -39,26 +39,8 @@ mi.parseData = function(data) {
     $('#rawdata').html(JSON.stringify(data));
     mi.log("Hits: " + data.hits);
     var result = "";
-    
-    /*
-     <div class="panel panel-primary song_container">
-                    <div class="panel-heading">
-                        <label class="artist">Black Sabbath</label><label class="song">Paranoid</label>
-                    </div>
-                    <div class="panel-body">
-                        <div class="info_block">
-                            <p class="info">Hard Rock</p>
-                            <p class="info">1972</p>
-                        </div>
-                        <div class="info_block">
-                            <p class="info">160 kbps</p>
-                            <p class="info">Paranoid</p>
-                        </div>
-                        <button class="btn btn-primary" type="button" id="btn_search">Play</button>
-                    </div>
-                </div>
-     */
     var id = 0;
+
     data.songs.forEach(function(d){
        result += mi.parseSong(id++, d);
     });
@@ -68,6 +50,7 @@ mi.parseData = function(data) {
 
 mi.search = function() {
     mi.log('searching...');
+    $('.result').html('<div class="progress"><div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="20" style="width: 100%"/></div>');
     
     var term = $('#txt_term').val();
     $.get(mi.base + "search/?term=" + term,mi.parseData);
