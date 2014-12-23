@@ -40,7 +40,7 @@ mi.parseSong = function(id,song) {
 mi.parseData = function(data) {
     var end = new Date().getTime() - mi.searchstart;
     $('#rawdata').html(JSON.stringify(data));
-    mi.log("Hits: " + data.hits + " Search took " + end + "ms");
+    mi.log("Found " + data.hits + " hits,  search took " + end + "ms");
     var result = "";
     var id = 0;
 
