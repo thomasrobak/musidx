@@ -20,7 +20,7 @@ public class Settings {
 
     @Value("${host:localhost}") String host;
     @Value("${port:9300}")	String port;
-    @Value("$(searchfields:Artist,Title") String fields;
+    @Value("$(searchfields:Artist^3,Title^2,SourceFile,Genre") String fields;
     
     public String getHost() {
         return host;
