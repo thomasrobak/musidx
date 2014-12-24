@@ -48,8 +48,8 @@ mi.parseData = function(data) {
     });
     
     $('.result').html(result);
-    var renderend = new Date().getTime() - searchend;
-    mi.log("Found " + data.hits + " hits,  search took " + searchend + "ms, rendering took " + renderend + "ms");
+    
+    mi.log("Found " + data.hits + " hits,  search took " + searchend + "ms");
     
 }
 
