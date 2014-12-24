@@ -48,12 +48,13 @@ mi.parseData = function(data) {
     });
     
     $('.result').html(result);
-    
+    $('#rawdata').css('visibility', 'visible');
     mi.log("Found " + data.hits + " hits,  search took " + searchend + "ms");
     
 }
 
 mi.search = function() {
+    $('#rawdata').css('visibility', 'hidden');
     mi.searchstart = new Date().getTime();
     mi.log('Searching...');
     $('.result').html('<div class="progress"><div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="20" style="width: 100%"/></div>');
