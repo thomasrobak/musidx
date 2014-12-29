@@ -11,6 +11,7 @@ import at.robak.musicservice.dao.clients.ESClient;
 import at.robak.musicservice.data.SearchResult;
 import at.robak.musicservice.data.Song;
 import at.robak.musicservice.parser.SearchResponseParser;
+import java.util.Arrays;
 import java.util.logging.Logger;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.search.SearchRequestBuilder;
@@ -51,7 +52,7 @@ public class ESMusicIndexDAO implements MusicIndexDAO{
 
     private QueryBuilder buildQuery(String term) {
         term = term.replaceAll(" ", "*");
-        log.info(String.format("Searching for %s", term));
+        log.info(String.format("Searching for %s with fields %s", term, Arrays.toString(settings.getSearchFields())));
         return QueryBuilders.multiMatchQuery(term, settings.getSearchFields());
 //        return QueryBuilders.boolQuery()
 //                .should(QueryBuilders.wildcardQuery("Title", term))
