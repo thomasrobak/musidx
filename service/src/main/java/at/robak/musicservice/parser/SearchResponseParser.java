@@ -12,15 +12,10 @@ package at.robak.musicservice.parser;
 
 import at.robak.musicservice.data.SearchResult;
 import at.robak.musicservice.data.Song;
-import java.lang.reflect.Field;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.SearchHitField;
 
 /**
  *
@@ -57,6 +52,7 @@ public class SearchResponseParser {
         song.setGenre(p.get("Genre"));
         song.setYear(p.get("Year"));
         song.setFile(p.get("SourceFile"));
+        song.setDuration(p.get("Duration"));
         
         return song;
     }
