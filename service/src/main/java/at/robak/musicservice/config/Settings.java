@@ -20,7 +20,7 @@ public class Settings {
     @Value("${port:9300}")              String port;
     @Value("${cluster:elasticsearch}")  String cluster;
 //    @Value("$(fields:Title^4,Album^3,Artist^3,Genre^2,SourceFile") String fields;
-    @Value("$(fields:Title,Album,Artist,Genre,SourceFile") String fields;
+    @Value("$(fields:Title,Album,Artist,Genre,SourceFile,file") String fields;
     
     public String getHost() {
         return host;

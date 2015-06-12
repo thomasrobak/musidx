@@ -23,7 +23,7 @@ public class ESClient {
     @PostConstruct
     public void afterPropertiesSet() throws Exception {
         org.elasticsearch.common.settings.Settings _settings = ImmutableSettings.settingsBuilder()
-        .put("cluster.name", "myClusterName").build();
+        .put("cluster.name", settings.getCluster()).build();
 
         client = new TransportClient(_settings)
 //                    .addTransportAddress(new InetSocketTransportAddress("master1.clupi", 9300));
